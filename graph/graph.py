@@ -54,7 +54,13 @@ class Graph(object):
         Each section in the list will store a list
         of tuples that looks like this:
         (To Node, Edge Value)"""
-        return []
+        edge_list = []
+        for edge in self.edges:
+            if edge.node_to and edge.value:
+                edge_list.append((edge.node_to.value, edge.value))
+            else:
+                edge_list.append(None)
+        return edge_list
     
     def get_adjacency_matrix(self):
         """Return a matrix, or 2D list.
