@@ -68,6 +68,8 @@ class Graph(object):
         column numbers represent to nodes.
         Store the edge values in each spot,
         and a 0 if no edge exists."""
+        for edge in self.edges:
+            print(edge.value)
         return []
 
 graph = Graph()
