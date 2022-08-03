@@ -55,11 +55,15 @@ class Graph(object):
         of tuples that looks like this:
         (To Node, Edge Value)"""
         edge_list = []
-        for edge in self.edges:
-            if edge.node_to and edge.value:
-                edge_list.append((edge.node_to.value, edge.value))
-            else:
-                edge_list.append(None)
+        for node in self.nodes:
+            print(node.value)
+            flag = 0
+            for edge in self.edges:
+                if edge.node_to == node:
+                    flag=1
+                    edge_list.append((node.value, edge.value))
+            if flag == 0:
+                edge_list.append("None")
         return edge_list
     
     def get_adjacency_matrix(self):
@@ -68,9 +72,20 @@ class Graph(object):
         column numbers represent to nodes.
         Store the edge values in each spot,
         and a 0 if no edge exists."""
-        for edge in self.edges:
-            print(edge.value)
-        return []
+        final_list = []
+        for node in self.nodes:
+            if node.edges:
+                node_list = []
+                for n in self.nodes:
+                    flag = 0
+                    for edge in node.edges:
+                        if (edge.node_to == n) &  (edge.node_from == node):
+                            flag = 1
+                            node_list.append(edge.value)
+                    if flag == 0:
+                        node_list.append(0)
+            final_list.append(node_list)
+        return final_list
 
 graph = Graph()
 graph.insert_edge(100, 1, 2)
