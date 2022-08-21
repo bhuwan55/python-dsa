@@ -56,7 +56,6 @@ class Graph(object):
         (To Node, Edge Value)"""
         edge_list = []
         for node in self.nodes:
-            print(node.value)
             flag = 0
             for edge in self.edges:
                 if edge.node_to == node:
